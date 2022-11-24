@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<style>
+form {
+    margin: auto;
+    width: 70%;
+border: 1px solid white;
+}
+.result {
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+
+
+body {
+  background-image: url('https://www.wellandgood.com/wp-content/uploads/2019/10/GettyImages-breast-cancer-awareness-disease-prevention-PrakasitKhuansuwan-EyeEm.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  color: Black;
+	
+
+}
+placeholder-shown{
+  border: 0px;
+}
+
+.inp{
+outline:none;
+border: none;
+background-color: transparent;
+border-bottom-style:solid;
+border-bottom: 0.5px solid #FF6A80;
+padding-right: 50px;
+font-size:15px;
+color:#FFB6C1;
+height: 20px;
+flex: 0 0 200px;
+margin-left: 10px;
+
+}
+.but{
+background-color: white;
+color: black;
+border: 2px solid #e7e7e7;
+text-align: center;
+font-size:15px;
+width: 100%;
+cursor: pointer;
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+
+}
+.but:hover {
+background-color: #555555;
+box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  color: #FF6A80;
+}
+
+.pred{
+text-align: center;
+font-size:40px;
+color:red;
+animation: blink 1s steps(1, end) infinite;
+  }
+
+@keyframes pred{
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+label {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  text-align: right;
+  width: 400px;
+  line-height: 26px;
+  margin-bottom: 10px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+justify-content: space-between;
+text-align: justify;
+}
+</style>
+
+
+<title>Predictor</title>
+
+
+<body>
+<h1>Breast Cancer Predictor</h1>
+<br><br>
+<form action="{{ url_for('result') }}" method="post" id='predicts'>
+
+<h3 style="text-align:justify;">Enter the following</h3>
+<div class='container'>
+<label for="v1">clump thickness</label> 
+<input class='inp' type="text"  name="clump thickness" required>
+
+<label for="v2">uniformity of cell size</label> 
+<input  class='inp'type="text"  name="uniformity of cell size" required> 
+
+<label for="v3">uniformity of cell shape</label> 
+<input class='inp' type="text"  name="uniformity of cell shape" required>
+
+<label for="v4">marginal adhesion</label> 
+<input class='inp' type="text"  name="marginal adhesion" required>
+
+<label for="v5">single epithelial cell size</label> 
+<input class='inp' type="text" name="single epithelial cell size" required>
+
+<label for="v6">bare nuclei</label> 
+<input class='inp' type="text"  name="bare nuclei" required>
+
+<label for="v7">bland chromatin</label> 
+<input class='inp' type="text"  name="bland chromatin" required>
+
+<label for="v8">normal nucleoli</label> 
+<input class='inp' type="text"  name="normal nucleoli" required>
+
+<label for="v9">mitoses</label> 
+<input class='inp' type="text"  name="mitoses" required>
+</div>
+<br>
+<br>
+<div>
+	<button class='but' type="submit" style:" text-align:center; ">Predict</button>
+	<p class='pred'> {{ result }} </p>
+</div>
+</form>
+</body>
+
+</html>
